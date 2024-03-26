@@ -4,6 +4,33 @@ import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
+
+    // Function to handle connecting to Mina Snap
+    const handleConnectMinaSnap = async () => {
+      if (window.ethereum && window.ethereum.isMetaMask) {
+        console.log("MetaMask is installed.");
+  
+        // Replace 'yourSnapId' with the actual Snap ID for Mina
+        const snapId = 'yourSnapId';
+        
+        try {
+          // Request to add the Mina Snap
+          await window.ethereum.request({
+            method: 'wallet_enable',
+            params: [{
+              wallet_snap: { [snapId]: {} },
+            }],
+          });
+          console.log("Mina Snap connected or enabled.");
+        } catch (error) {
+          console.error("Error connecting to Mina Snap:", error);
+        }
+      } else {
+        alert("MetaMask is not installed. Please install MetaMask to use this feature.");
+      }
+    };
+
+
   return (
     <div className={styles.container}>
       <Head>
@@ -20,6 +47,11 @@ export default function Home() {
         <p className={styles.description}>
           Leveraging the Mina Protocol for Maximum Privacy and Security
         </p>
+
+        {/* Connect to Mina Snap Button */}
+        <button onClick={handleConnectMinaSnap} className={styles.minaSnapButton}>
+          Connect Mina
+        </button>
 
         <div className={styles.grid}>
           <div className={styles.card}>

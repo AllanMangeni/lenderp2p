@@ -44,6 +44,21 @@
     max-width: 800px;
     margin-top: 3rem;
   }
+
+  .minaSnapButton {
+    margin-top: 20px; /* Adjust spacing as needed */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0070f3; /* Example color */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .minaSnapButton:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+  }
   
   .card {
     margin: 1rem;
