@@ -1,3 +1,5 @@
+import { AssetTransfer } from "./AssetTransfer";
+import { CreditWorthiness } from "./Creditworthiness";
 
 
 describe("AssetTransfer Contract", () => {
@@ -5,7 +7,7 @@ describe("AssetTransfer Contract", () => {
   let assetTransferContract: AssetTransfer;
 
   beforeAll(async () => {
-    // Assume a function to deploy or initialize the CreditWorthiness contract for testing
+  
     creditWorthinessContract = await deployCreditWorthinessContract();
     // Deploy the AssetTransfer contract with the address of the CreditWorthiness contract
     assetTransferContract = await deployAssetTransferContract(creditWorthinessContract.address);
@@ -35,3 +37,19 @@ describe("AssetTransfer Contract", () => {
     expect(transferResult).toBe(false);
   });
 });
+function beforeAll(arg0: () => Promise<void>) {
+  throw new Error("Function not implemented.");
+}
+
+function deployCreditWorthinessContract(): any {
+  throw new Error("Function not implemented.");
+}
+
+function deployAssetTransferContract(address: any): any {
+  throw new Error("Function not implemented.");
+}
+
+function expect(transferResult: any) {
+  throw new Error("Function not implemented.");
+}
+

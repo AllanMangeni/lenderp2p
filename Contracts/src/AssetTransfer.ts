@@ -1,14 +1,17 @@
-// Import necessary components from your smart contract library
+
 import { SmartContract, Field, method, PublicKey, PrivateKey, Mina } from 'o1js';
 import { CreditWorthiness } from './Creditworthiness';
 
-class AssetTransfer extends SmartContract {
+export class AssetTransfer extends SmartContract {
+  transferAsset(publicKey: any, recipientPublicKey: string, amount: number) {
+      throw new Error('Method not implemented.');
+  }
   private creditWorthinessContract: CreditWorthiness;
 
   constructor(creditWorthinessAddress: PublicKey) {
     super();
     // Initialize the CreditWorthiness contract interface with its address
-    this.creditWorthinessContract = new CreditWorthiness(creditWorthinessAddress);
+    this.creditWorthinessContract = new CreditWorthiness();
   }
 
   @method async transferAssetIfCreditworthy(sender: PublicKey, recipient: PublicKey, amount: Field, senderData: any): Promise<boolean> {
@@ -18,7 +21,7 @@ class AssetTransfer extends SmartContract {
     if (isCreditworthy) {
       // Logic to transfer the asset
       console.log(`Transferring ${amount} from ${sender} to ${recipient}`);
-      // You would include the actual transfer logic here, which might involve updating state to reflect the transfer
+      
       
       return true; // Indicate success
     } else {
@@ -34,10 +37,10 @@ class AssetTransfer extends SmartContract {
   const assetTransferContract = new AssetTransfer(creditWorthinessAddress);
 
   // Example data - replace with actual data
-  const sender = new PublicKey(/* sender's public key */);
-  const recipient = new PublicKey(/* recipient's public key */);
-  const amount = new Field(/* transfer amount */);
-  const senderData = {/* sender's data for credit score verification */};
+  const sender = new PublicKey(0);
+  const recipient = new PublicKey();
+  const amount = new Field();
+  const senderData = {};
 
   // Attempt to transfer asset
   const success = await assetTransferContract.transferAssetIfCreditworthy(sender, recipient, amount, senderData);
